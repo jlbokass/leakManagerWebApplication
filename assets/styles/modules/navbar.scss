@@ -1,0 +1,18 @@
+.navbar-brand {
+  font-size: 150%;
+}
+
+a.nav-link:hover {
+  color: #f7722f !important;
+  transition: color .3s;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+  color: #f7722f !important;
+}
+
+.navbar-toggler {
+  color: #fff;
+  background-color: transparent;
+  border-color: #fff !important;
+}

@@ -1,0 +1,67 @@
+body {
+  background-color: #e9ecef
+}
+
+main {
+  margin-top: 90px;
+  margin-bottom: 20px;
+  padding: 10px 10px 0 10px;
+
+}
+
+.leak-font-1 {
+  font-size: 1.7rem;
+}
+
+.box-action {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  margin-left: auto;
+}
+
+.box-action-element {
+  width: 20px;
+  height: 20px;
+  padding: 15px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.box-action-element-1 {
+  background-color: rgb(248,150,62);
+}
+
+.box-action-element-2 {
+  background-color: rgb(67,74,84);
+}
+
+.box-action-element-3 {
+  background-color: rgb(233,87,63);
+}
+
+.box-action-element-4 {
+  background-color: rgb(14,73,133);
+}
+
+.leak-small {
+  font-size: 50%;
+}
+
+.leak-active {
+  color: rgb(233,87,63) !important;
+}
+
+.alert-verify_email_error {
+  background-color: #B0413E;
+}
+
+
+/* Table */
+
+

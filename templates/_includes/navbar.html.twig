@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg leak-bg-blue fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white fw-bold" href="#">
+            <span class="leak-text-orange">LEAK</span> MANAGER
+        </a><a
+                href="https://www.duffau.eu/" target="_blank" class="text-white text-decoration-none d-none d-sm-block ">Groupe DUFFAU Technologies</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <!-- Source : https://dthlabs.com/set-a-bootstrap-menu-item-as-active-in-symfony-5/ -->
+                    <a class="nav-link text-white {% if route_name == "app_home" %} leak-active {% endif %}" aria-current="page" href="#">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white {% if route_name == "app_campaigns_index" or route_name == "app_campaigns_show" or route_name == "app_campaigns_edit" %} leak-active {% endif %}" href="{{ path('app_web_campaign') }}">Campagnes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white {% if route_name == "app_reports" %} leak-active {% endif %}" href="#">Rapport personnalisés</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white {% if route_name == "app_about" %} leak-active {% endif %}" href="#">A propos</a>
+                </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white {% if route_name == "app_admin_dashboard" %} leak-active {% endif %}" href="#">Administration</a>
+                    </li>
+                {% endif %}
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-white btn dropdown-toggle px-2 py-2 {% if route_name == "app_profile_show" %}leak-active{% endif %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong>John Doe</strong>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">profil</a></li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a class="dropdown-item" href="#">administration</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item" href="#">déconnexion</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,17 @@
+:root {
+  --leak-blue:rgb(15,80,160);
+  --leak-blue-light: rgba(54, 162, 235, 0.7);
+  --leak-orange: rgba(247,114,47,.7);
+}
+
+.leak-bg-blue {
+  background-color: var(--leak-blue);
+}
+
+.leak-bg-blue-light {
+  background-color: var(--leak-blue-light);
+}
+
+.leak-text-orange {
+  color: rgb(247,114,47);
+}
