@@ -1,10 +1,16 @@
+{% set route_name = app.request.attributes.get('_route') %}
+
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
+        <!-- Font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -14,6 +20,25 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% include '_includes/navbar.html.twig' %}
+        <main>
+            <div class="container-fluid">
+                <h1 class="mb-md-3">{% block page_title %}Nom de la page{% endblock %}</h1>
+                <div class="bg-white rounded-2 p-3">
+                    {# Flash message #}
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {# block body #}
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </main>
+        {% include '_includes/footer.html.twig' %}
     </body>
 </html>

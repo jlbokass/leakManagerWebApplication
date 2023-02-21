@@ -1,0 +1,88 @@
+<form name="campaigns" method="post" action="{{ path('app_web_campaign_new') }}">
+    <div class="form-group">
+        <div class="mb-3">
+            <label
+                    for="campaigns_society_name"
+                    class="form-label required">Nom du client
+            </label>
+            <input
+                    type="text" id="campaigns_society_name" name="campaigns[society_name]" required="required"
+                    class="form-control"
+            />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="mb-3">
+            <label
+                    for="campaigns_society_location" class="form-label required">Lieux de la
+                campagne
+            </label>
+            <input
+                    type="text"
+                    id="campaigns_society_location" name="campaigns[location]"
+                    required="required"
+                    class="form-control"
+            />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+            <div class="mb-3">
+                <label
+                        for="campaigns_kwh_price"
+                        class="form-label required">KWh/m³
+                </label>
+                <input
+                        type="number" id="campaigns_kwh_price" name="campaigns[kwh_price]" required="required"
+                        inputmode="decimal" class="form-control"
+                />
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+            <div class="mb-3">
+                <label
+                        for="nbr_compressor_use_by_year"
+                        class="form-label
+                        required">Heure/an
+                </label>
+                <input
+                        type="number"
+                        id="nbr_compressor_use_by_year"
+                        name="campaigns[nbr_compressor_use_by_year]"
+                        required="required"
+                        inputmode="decimal"
+                        class="form-control"
+                />
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <div class="mb-3">
+                <label
+                        for="campaigns_electricity_price" class="form-label required">Prix
+                    Kwh
+                </label>
+                <input
+                        type="text"
+                        id="campaigns_electricity_price" name="campaigns[electricity_price]"
+                        required="required"
+                        inputmode="decimal"
+                        class="form-control"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="mb-3">
+            <label
+                    for="campaigns_description"
+                    class="form-label required">Description
+            </label>
+            <textarea
+                    id="campaigns_description" name="campaigns[description]" required="required" rows="6"
+                     class="form-control"></textarea>
+        </div>
+    </div>
+    <button class="btn leak-btn-orange">Ajoutez</button>
+    <button class="btn btn-info">Annulez</button>
+</form>

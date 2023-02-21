@@ -1,0 +1,26 @@
+.leak-btn-orange {
+  background-color: rgb(247, 114, 47) !important;
+  transition-duration: 0.4s;
+  color: white !important;
+}
+
+.leak-btn-orange:hover {
+  background-color: rgb(221, 79, 8) !important; /* Green */
+  color: white !important;
+}
+
+.leak-btn-orange-outline {
+  border: 1px solid #f7722f !important;
+  transition-duration: 0.4s;
+  color: #f7722f !important;
+}
+
+.leak-btn-orange-outline:hover {
+  background-color: rgb(221, 79, 8) !important; /* Green */
+  color: white !important;
+}
+
+.leak-btn-red {
+  background-color: transparent;
+  border: none;
+}

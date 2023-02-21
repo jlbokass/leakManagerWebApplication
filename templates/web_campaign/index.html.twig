@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Campaigns{% endblock %}
+
+{% block page_title %}
+    Campagnes
+{% endblock %}
+{% block body %}
+    <div class="row mb-3">
+        <div class="col-12 col-md-4 mb-3 mb-md-0">
+            <div class="d-grid gap-2">
+                <a href="{{ path('app_web_campaign_form') }}" class="btn leak-btn-orange" type="button">Ajouter une nouvelle campagne</a>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4 mb-3 mb-md-0">
+            <div class="input-group">
+                <label class="input-group-text" for="inputGroupSelect01">Nombre de ligne</label>
+                <select class="form-select" id="inputGroupSelect01">
+                    <option selected>Choisir...</option>
+                    <option value="1">20</option>
+                    <option value="2">30</option>
+                    <option value="3">50</option>
+                    <option value="3">100</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4 mb-3 mb-md-0">
+            <form method="get">
+                <div class="mb-3">
+                    <input type="text" id="string" name="string" placeholder="Votre recherche ..." class="form-control">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover js-lm-table">
+            <thead class="bg-light">
+            <tr>
+                <th>id</th>
+                <th>Date</th>
+                <th>Société</th>
+                <th>Lieux</th>
+                <th>Technicien</th>
+                <th>Fuite(s)</th>
+                <th class="text-md-end">actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for campaign in campaigns %}
+                <tr>
+                    <td>{{ campaign.id }}</td>
+                    <td>{{ campaign.createdAt ? campaign.createdAt|date('d-m-Y') : '' }}</td>
+                    <td><a href="{{ path('app_web_campaign_show', {'id' : campaign.id}) }}">{{ campaign.societyName }}
+                        </a></td>
+                    <td>{{ campaign.location }}</td>
+                    <td>{{ campaign.user.firstName }} {{ campaign.user.lastName }}</td>
+                    <td>{{ campaign.leaks | length }}</td>
+                    <td>
+                        <div class="d-flex justify-content-end">
+                            <div class="box-action-element box-action-element-1"><a href="#" class="text-white"><i class="fa-solid fa-eye"></i></a></div>
+                            <div class="box-action-element box-action-element-2"><a href="#" class="text-white"><i class="fa-solid fa-pencil"></i></a></div>
+                            <div class="box-action-element box-action-element-3">
+                                <a href="#"
+                                   class="text-white js-delete-campaign"
+                                   data-url="{{ path('app_web_campaign_delete', {id : campaign.id}) }}"
+                                >
+                                    <i class="fa fa-solid fa-trash-can"></i>
+                                </a>
+                            </div>
+                            <div class="box-action-element box-action-element-4"><a
+                                        href="#"
+                                        class="text-white js-deactivated-campaign"
+                                >
+                                    <i class="fa-solid fa-check"></i></a></div>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">aucune campagne d'enregistrée</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {# Pagination #}
+    <div class="row">
+        <div class="col-lg-6">
+            <p>de 1 à 10 sur <?= $total_records ?> campagne(s)</p>
+        </div>
+        <div class="col-lg-6">
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,38 @@
+#footer {
+  position: relative;
+  background-image:url("/public/build/images/spi-energie-footer-bg.jpg");
+  background-size: cover;
+  //position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #f7722f !important;
+    transition: color .3s;
+  }
+}
+
+
+/* https://coder-coder.com/background-image-opacity/ */
+#my-footer::before {
+  content: "";
+  background-image: url("/public/build/images/spi-energie-footer-bg.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.2;
+}
+
+footer {
+  a {
+    text-decoration: none;
+  }
+}
