@@ -69,11 +69,18 @@
                                     <i class="fa fa-solid fa-trash-can"></i>
                                 </a>
                             </div>
-                            <div class="box-action-element box-action-element-4"><a
-                                        href="#"
-                                        class="text-white js-deactivated-campaign"
-                                >
-                                    <i class="fa-solid fa-check"></i></a></div>
+                            <div class="box-action-element box-action-element-4">
+                                {% if campaign.isActive %}
+                                    <a
+                                            href="#"
+                                            class="text-white js-deactivated-campaign"
+                                            data-deactivated="{{ path('app_web_campaign_delete', {id : campaign.id}) }}"
+                                    >
+                                        <i class="fa-deactivated fa-solid fa-check"></i></a>
+                                {% else %}
+
+                                {% endif%}
+                            </div>
                         </div>
                     </td>
                 </tr>

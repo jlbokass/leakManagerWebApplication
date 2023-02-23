@@ -3,6 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Campaign;
+use App\Entity\Post;
+use App\Entity\PostLike;
+use App\Entity\User;
+use App\Repository\PostLikeRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,7 +39,7 @@ class WebCampaignController extends AbstractController
     {
         $response = $this->client->request(
             'GET',
-            'https://127.0.0.1:8001/api/campaigns?oage=1&limit=20'
+            'https://127.0.0.1:8000/api/campaigns?page=1&limit=20'
         );
 
         $statusCode = $response->getStatusCode();
@@ -59,7 +64,7 @@ class WebCampaignController extends AbstractController
     {
         $response = $this->client->request(
             'GET',
-            'https://127.0.0.1:8001/api/campaigns/'. $id, [
+            'https://127.0.0.1:8000/api/campaigns/'. $id, [
                 'query' => ['id' => $id]
             ]
         );
@@ -85,7 +90,7 @@ class WebCampaignController extends AbstractController
     {
         $this->client->request(
             'DELETE',
-            'https://127.0.0.1:8001/api/campaigns/'. $id, [
+            'https://127.0.0.1:8000/api/campaigns/'. $id, [
                 'query' => ['id' => $id]
             ]
         );
