@@ -14,16 +14,19 @@
         </div>
 
         <div class="col-12 col-md-4 mb-3 mb-md-0">
-            <div class="input-group">
-                <label class="input-group-text" for="inputGroupSelect01">Nombre de ligne</label>
-                <select class="form-select" id="inputGroupSelect01">
-                    <option selected>Choisir...</option>
-                    <option value="1">20</option>
-                    <option value="2">30</option>
-                    <option value="3">50</option>
-                    <option value="3">100</option>
-                </select>
-            </div>
+            <form name="formNumberOfPage" action="" method="get">
+                <div class="input-group">
+                    <label class="input-group-text" for="numberOfPage">Nombre de ligne</label>
+                    <select name="numberOfPage" class="form-select" id="numberOfPage">
+                        <option selected>Choisir...</option>
+                        <option value="0">10</option>
+                        <option value="1">20</option>
+                        <option value="2">30</option>
+                        <option value="3">50</option>
+                        <option value="3">100</option>
+                    </select>
+                </div>
+            </form>
         </div>
 
         <div class="col-12 col-md-4 mb-3 mb-md-0">
@@ -70,16 +73,19 @@
                                 </a>
                             </div>
                             <div class="box-action-element box-action-element-4">
-                                {% if campaign.isActive %}
                                     <a
                                             href="#"
-                                            class="text-white js-deactivated-campaign"
-                                            data-deactivated="{{ path('app_web_campaign_delete', {id : campaign.id}) }}"
+                                            class="text-white js-campaign-status"
+                                            data-campaign-status="#"
                                     >
-                                        <i class="fa-deactivated fa-solid fa-check"></i></a>
-                                {% else %}
-
-                                {% endif%}
+                                        {% if campaign.isActive %}
+                                        <i class="
+                                        fa-solid
+                                        fa-check"></i>
+                                        {% else %}
+                                            <i class="fas fa-times"></i>
+                                        {% endif %}
+                                    </a>
                             </div>
                         </div>
                     </td>

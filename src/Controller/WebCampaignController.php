@@ -10,6 +10,7 @@ use App\Repository\PostLikeRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,11 +36,17 @@ class WebCampaignController extends AbstractController
      * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
      */
     #[Route('/campaigns', name: 'app_web_campaign')]
-    public function index()
+    public function index(Request $request): Response
     {
+        if ($_SERVER['REQUEST_METHOD'] === "get") {
+            $numberOfPage = $_GET['formNumberOfPage']['numberOfPage'];
+            //$limitSend = $_GET['limit'];
+        }
+        $page = $request->query->getInt('page', 1);
+        $limit = $request->query->getInt('limit', 10);
         $response = $this->client->request(
             'GET',
-            'https://127.0.0.1:8000/api/campaigns?page=1&limit=20'
+            'https://127.0.0.1:8000/api/campaigns?page='. $page . '&limit=' . $limit
         );
 
         $statusCode = $response->getStatusCode();
@@ -160,5 +167,17 @@ class WebCampaignController extends AbstractController
         return $this->render('web_campaign/show.html.twig', [
             'campaign' => $content
         ]);
+    }
+
+    #[Route('/test/campaign', name: 'app_campaign_test_campaign')]
+    public function testCampaign(): JsonResponse
+    {
+        return $this->json(
+            [
+                'code' => 200,
+                'message' => 'Campaign activated',
+            ],
+            200
+        );
     }
 }
